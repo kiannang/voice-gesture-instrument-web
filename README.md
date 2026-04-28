@@ -99,23 +99,61 @@ npm run preview
 
 ### GitHub Pages
 
-1. Fork the repository on GitHub
-2. Update `vite.config.ts` base path to match your repository:
+1. Fork the repository on GitHub and push your code to a repository named `voice-gesture-instrument-web`.
+2. Configure the `base` option in `vite.config.ts` only if you are deploying to a repository page and want absolute paths:
    ```typescript
    export default defineConfig({
-     base: '/voice-gesture-instrument-web/',
-     // ...
+     base: './',
+     plugins: [react()],
+     server: {
+       open: true,
+     },
    })
    ```
-3. Deploy using:
+3. Deploy with:
    ```bash
    npm run deploy:github
    ```
 
-This requires the `gh-pages` package. Install it with:
+The project already includes `gh-pages` as a dev dependency, so install dependencies once with:
 ```bash
-npm install --save-dev gh-pages
+npm install
 ```
+
+### Optional: GitHub Actions Deployment
+
+If you want continuous deployment from `main` to GitHub Pages, add a workflow like this:
+
+```yaml
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - name: Install dependencies
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          publish_dir: ./dist
+          publish_branch: gh-pages
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+```
+
+Then enable GitHub Pages in your repository settings to publish the `gh-pages` branch.
 
 ### Vercel
 
