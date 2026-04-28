@@ -9,18 +9,18 @@ export default function Hero({ onStartInstrument }: HeroProps) {
     <section className="hero">
       <div className="hero-content">
         <div className="hero-text">
-          <h1 className="hero-title">Voice Gesture Instrument</h1>
+          <h1 className="hero-title">Reverbia</h1>
           <p className="hero-headline">Your voice, controlled by gesture.</p>
           <p className="hero-subheadline">
-            Turn your webcam and microphone into a hands-free vocal effects instrument. Pinch to control 
-            reverb, raise your hand to blend harmony/effects, and perform through a cyber-style live HUD.
+            A real-time, gesture-controlled vocal effects instrument. Pinch to shape reverb,
+            raise your hand to blend harmony, and perform through a neon HUD — no hardware needed.
           </p>
 
           <div className="hero-buttons">
             <button className="btn btn-primary" onClick={onStartInstrument}>
               Start Instrument
             </button>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="btn btn-secondary">
+            <a href="https://github.com/kiannang/voice-gesture-instrument-web" target="_blank" rel="noopener noreferrer" className="btn btn-secondary">
               View GitHub
             </a>
           </div>

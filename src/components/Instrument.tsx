@@ -154,7 +154,7 @@ export default function Instrument({ onClose }: InstrumentProps) {
   return (
     <div className="instrument-container">
       <div className="instrument-header">
-        <h2>Voice Gesture Instrument</h2>
+        <h2>Reverbia</h2>
         <button className="btn btn-close" onClick={onClose}>
           ← Back
         </button>
